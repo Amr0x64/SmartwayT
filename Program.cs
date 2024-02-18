@@ -1,3 +1,4 @@
+using SmartWayTest;
 using SmartWayTest.Contracts;
 using SmartWayTest.Data;
 using SmartWayTest.Repository;
@@ -21,6 +22,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+using (var scope = builder.Services.BuildServiceProvider().CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    try
+    {
+        var context = serviceProvider.GetRequiredService<DapperContext>();
+        await InitializeBd.Initialize(context);
+    }
+    catch 
+    {
+    }
+}
 app.UseRouting();
 app.UseHttpsRedirection();
 
