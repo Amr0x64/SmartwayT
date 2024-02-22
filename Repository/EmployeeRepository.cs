@@ -132,6 +132,18 @@ public class EmployeeRepository : IEmployeeRepository
                 parameters.Add("Phone", employeeUpdate.Phone, DbType.String);
             }
 
+            if (employeeUpdate.CompanyId != null)
+            {
+                query += "CompanyId = @CompanyId,";
+                parameters.Add("CompanyId", employeeUpdate.CompanyId, DbType.Int32);
+            }
+            
+            if (employeeUpdate.DepartmentId != null)
+            {
+                query += "DepartmentId = @DepartmentId,";
+                parameters.Add("DepartmentId", employeeUpdate.DepartmentId, DbType.Int32);
+            }
+            
             query = query.TrimEnd(',');
             
             query += " WHERE Id = @Id";
