@@ -15,8 +15,8 @@ public class InitializeBd
         {
             string query = File.ReadAllText(@"Scripts\Sqlinitialize.sql");
 
-            int a = await connection.ExecuteAsync(query);
-            Console.WriteLine(a);
+            int count = await connection.ExecuteAsync(query);
+            Console.WriteLine(count);
         }
     }
 }

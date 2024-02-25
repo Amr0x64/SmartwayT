@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using SmartWayTest;
 using SmartWayTest.Contracts;
 using SmartWayTest.Data;

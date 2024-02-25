@@ -3,12 +3,6 @@ create table Companies (
        Name varchar(250) not null
 );
 
-create table Passports (
-       Id int PRIMARY KEY IDENTITY,
-       Type varchar(250),
-       Number varchar(250)
-);
-
 create table Departments (
          Id int PRIMARY KEY IDENTITY,
          Name varchar(250) unique,
@@ -16,16 +10,20 @@ create table Departments (
 );
 
 create table Employees (
-Id int PRIMARY KEY IDENTITY,    
-Name varchar(250) not null,
-Surname varchar(250) not null,
-Phone varchar(20) unique,
-CompanyId int references Companies (Id),
-PassportId int references Passports (Id),
-DepartmentId int references Departments (Id)
+        Id int PRIMARY KEY IDENTITY,    
+        Name varchar(250) not null,
+        Surname varchar(250) not null,
+        Phone varchar(20) unique,
+        CompanyId int references Companies (Id),
+        DepartmentId int references Departments (Id)
+);
+
+create table Passports (
+       Number varchar(250) PRIMARY KEY,
+       Type varchar(250),
+       EmployeeId int references Employees(Id)
 );
 
 --Данная инициализация требуется, для успешного создания сотрудника. 
 insert into Companies values ('smartway');
-insert into Passports values ('ID', '28-12-121212');
 insert into Departments values ('AI', '89881231212');
